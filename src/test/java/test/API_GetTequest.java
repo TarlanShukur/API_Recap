@@ -1,6 +1,8 @@
 package test;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.json.JSONObject;
 import org.junit.Test;
@@ -18,7 +20,10 @@ public class API_GetTequest {
         expBody.put("userId",5);
         expBody.put("title","optio dolor molestias sit");
 
-        RestAssured.given().when().get(url);
+        RestAssured.given().when().get(url).then()
+                .assertThat().statusCode(200)
+                .contentType(ContentType.JSON);
+        
 
 
     }
