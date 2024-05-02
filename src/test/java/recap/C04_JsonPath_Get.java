@@ -6,6 +6,7 @@ import io.restassured.response.Response;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class C04_JsonPath_Get {
 
@@ -34,9 +35,20 @@ public class C04_JsonPath_Get {
         Response response = given().when().get(url);
         JsonPath json = response.jsonPath();
 
-        int id=json.getInt("id");
+        int id = json.getInt("id");
         String name=json.getString("name");
         System.out.println(id);
         System.out.println(name);
+
+        assertEquals(200,response.statusCode());
+        assertEquals("application/json",response.contentType());
+        assertEquals("xyz",json.getString("name"));
+        assertEquals("available",json.getString("status"));
+        assertEquals("xyz",json.getString("category.name"));
+
+
+
+
+
     }
 }

@@ -24,7 +24,5 @@ public class C02_HamcrestMatchers_GetList {
                 .body("[0].category.id", equalTo(0))
                 .body("[0]tags.id[0]",equalTo(0))
         ;
-
-
     }
 }
