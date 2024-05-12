@@ -20,7 +20,6 @@ public class C05_JsonPath_GetList {
         assertEquals(200, response.statusCode());
         assertEquals("application/json", response.contentType());
         assertTrue(json.getList("findAll{it.id==9898}").isEmpty());
-        
 
 
     }
